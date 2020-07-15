@@ -8,5 +8,10 @@ const kLabelStyle = TextStyle(
   fontSize: 18,
   color: Color(0xFF8D8E98),
 );
-const kNumberStyle =
-    TextStyle(fontSize: 50, fontWeight: FontWeight.w900);
+const kNumberStyle = TextStyle(fontSize: 50, fontWeight: FontWeight.w900);
+
+const kResultTitle = TextStyle(fontSize: 40, fontWeight: FontWeight.bold);
+const kResultText =
+    TextStyle(fontSize: 16, letterSpacing: 1.2, color: Colors.green);
+const kFinalBMI = TextStyle(fontSize: 70, fontWeight: FontWeight.bold);
+const kFinalText = TextStyle(fontSize: 22);
