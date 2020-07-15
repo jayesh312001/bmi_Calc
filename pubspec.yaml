@@ -10,6 +10,8 @@ dependencies:
   flutter:
     sdk: flutter
   font_awesome_flutter: ^8.8.1
+  flutter_launcher_icons: ^0.7.5
+  flutter_launcher_name: ^0.0.1
 
   cupertino_icons: ^0.1.2
 
@@ -17,5 +19,17 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
+flutter_icons:
+  image_path: "assets/icon.png" 
+  android: true
+  ios: true
+
+flutter_launcher_name:
+  name: "BMI Calculator"
+
 flutter:
   uses-material-design: true
+  fonts:
+   - family: Jose
+     fonts:
+       - asset: fonts\JosefinSans-VariableFont_wght.ttf

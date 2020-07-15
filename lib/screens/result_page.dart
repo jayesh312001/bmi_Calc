@@ -1,22 +1,26 @@
 import 'package:bmi_calculator/constants.dart';
 import 'package:bmi_calculator/components/myCard.dart';
 import 'package:flutter/material.dart';
-import 'package:bmi_calculator/screens/input_page.dart';
 import '../components/bottom_button.dart';
 
 class ResultPage extends StatelessWidget {
-  double calculateBMI(double weight, double height) {
-    double h = height / 100;
-    double a = weight / (h * h);
-    return a;
-  }
+  ResultPage(
+      {@required this.bmiResult,
+      @required this.bmiResultText,
+      @required this.bmiResultAnalysis});
+  final String bmiResult;
+  final String bmiResultText;
+  final String bmiResultAnalysis;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         elevation: 40,
-        title: Text('BMI CALCULATOR'),
+        title: Text(
+          'BMI CALCULATOR',
+          style: TextStyle(fontFamily: 'Jose', fontWeight: FontWeight.w900),
+        ),
         centerTitle: true,
       ),
       body: Column(
@@ -40,16 +44,29 @@ class ResultPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     Text(
-                      'NORMAL',
+                      bmiResultText,
                       style: kResultText,
                     ),
                     Text(
-                      '23.6',
+                      bmiResult,
                       style: kFinalBMI,
                     ),
                     Text(
-                      'You need to eat more',
+                      'Normal BMI Range:\n18.5 - 25 kg/m2',
+                      style: kLabelStyle,
+                      textAlign: TextAlign.center,
+                    ),
+                    Text(
+                      '',
                       style: kFinalText,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        bmiResultAnalysis,
+                        style: kFinalText,
+                        textAlign: TextAlign.center,
+                      ),
                     )
                     // Text(calculateBMI(weight, height).toString())
                   ],

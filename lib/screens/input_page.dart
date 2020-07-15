@@ -5,7 +5,8 @@ import 'package:bmi_calculator/components/icon_content.dart';
 import 'package:bmi_calculator/constants.dart';
 import 'result_page.dart';
 import '../components/bottom_button.dart';
-import 'package:bmi_calculator/classes/roundButton.dart';
+import 'package:bmi_calculator/components/roundButton.dart';
+import 'package:bmi_calculator/calculator.dart';
 
 enum Gender { male, female }
 
@@ -23,7 +24,10 @@ class _InputPageState extends State<InputPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('BMI CALCULATOR'),
+        title: Text(
+          'BMI CALCULATOR',
+          style: TextStyle(fontFamily: 'Jose', fontWeight: FontWeight.w900),
+        ),
         centerTitle: true,
         elevation: 20,
       ),
@@ -222,10 +226,19 @@ class _InputPageState extends State<InputPage> {
           ),
           BottomButton(
             text: 'CALCULATE YOUR BMI',
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => ResultPage()),
-            ),
+            onTap: () {
+              CalculatorBrain calc =
+                  CalculatorBrain(weight: weight, height: height);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => ResultPage(
+                          bmiResult: calc.calculateBMI(),
+                          bmiResultAnalysis: calc.getResultTip(),
+                          bmiResultText: calc.getResult(),
+                        )),
+              );
+            },
           ),
         ],
       ),
